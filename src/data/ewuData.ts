@@ -1,4 +1,4 @@
-import { ProgramInfo, WaiverOption, FAQItem } from '../types';
+import type { ProgramInfo, WaiverOption, FAQItem } from '../types';
 
 export const EWU_INFO = {
   name: "East West University (EWU)",

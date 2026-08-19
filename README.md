@@ -24,11 +24,10 @@ An intelligent, interactive virtual assistant and tuition fee calculator designe
 
 ## 🚀 Live Demo & Links
 
-- **Production URL**: Add the Vercel URL here after deployment, for example `https://ewu-ai-assistant.vercel.app`.
+- **Production URL**: [ewu-ai-assistant.vercel.app](https://ewu-ai-assistant.vercel.app)
 - **Source Code**: [github.com/Calius17/ewu-ai-assistant](https://github.com/Calius17/ewu-ai-assistant)
 
-The deployed app works without an API key using its local EWU information engine. Add
-`GEMINI_API_KEY` in Vercel Project Settings to enable Gemini-powered answers.
+The deployed app works without an API key using its grounded EWU information engine.
 
 ---
 
@@ -75,14 +74,13 @@ ignored by this project, while `.env.example` is safe to share.
 
 ## ⚡ How to Deploy on Vercel
 
-This repository includes a pre-configured `vercel.json` and serverless API route in `/api/index.ts`.
+This repository includes a pre-configured `vercel.json` and native Vercel API routes in `/api`.
 
 ### Deploy from GitHub
 
 1. **Sign In to Vercel**: Go to [vercel.com](https://vercel.com) and sign in with your GitHub account.
 2. **Import Project**: Click **Add New...** > **Project**, and select your GitHub repository.
-3. **Configure Environment Variables**:
-    - In the **Environment Variables** section, add `GEMINI_API_KEY` with a key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+3. **Configure Environment Variables**: No environment variable is required for the deployed fallback assistant.
 4. **Deploy**:
    - The repository includes `vercel.json`; keep the detected Vite settings and deploy.
    - Click **Deploy**.
@@ -129,7 +127,11 @@ The application will be accessible at `http://localhost:3000`.
 
 ```
 ├── api/
-│   └── index.ts                 # Vercel Serverless API handler
+│   ├── chat.ts                  # Chat API handler
+│   ├── calculate-fee.ts         # Fee calculation API handler
+│   ├── health.ts                # Deployment health check
+│   ├── index.ts                 # Local/legacy Express API handler
+│   └── programs.ts              # Programs API handler
 ├── src/
 │   ├── components/
 │   │   ├── BentoSidebar.tsx     # Quick estimator & prompt shortcuts

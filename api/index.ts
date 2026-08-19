@@ -190,4 +190,6 @@ app.post("/api/chat", async (req: Request, res: Response) => {
   });
 });
 
-export default app;
+export default function handler(req: Request, res: Response) {
+  return app(req, res);
+}
