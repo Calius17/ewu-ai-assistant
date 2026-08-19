@@ -1,0 +1,6 @@
+{
+  "name": "East West University Chatbot & Fee Assistant",
+  "description": "An AI-powered interactive chatbot and tuition fee assistant for East West University (EWU), answering admissions, degree programs, semester fees, waivers, and campus queries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
