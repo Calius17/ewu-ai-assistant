@@ -25,7 +25,7 @@ An intelligent, interactive virtual assistant and tuition fee calculator designe
 ## 🚀 Live Demo & Links
 
 - **Production URL**: Add the Vercel URL here after deployment, for example `https://ewu-ai-assistant.vercel.app`.
-- **Source Code**: Add the GitHub repository URL here after creating the repository.
+- **Source Code**: [github.com/Calius17/ewu-ai-assistant](https://github.com/Calius17/ewu-ai-assistant)
 
 The deployed app works without an API key using its local EWU information engine. Add
 `GEMINI_API_KEY` in Vercel Project Settings to enable Gemini-powered answers.
