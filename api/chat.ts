@@ -44,6 +44,23 @@ export default async function handler(request: Request, response: Response) {
 
   const lowerQuery = message.toLowerCase().trim();
   const matchedProgram = PROGRAMS.find((program) => program.aliases.some((alias) => lowerQuery.includes(alias)));
+  const programCard = matchedProgram
+    ? {
+        id: matchedProgram.id,
+        name: matchedProgram.name,
+        degree: matchedProgram.degree,
+        faculty: "East West University",
+        durationYears: 4,
+        totalCredits: matchedProgram.credits,
+        perCreditFeeBDT: matchedProgram.perCredit,
+        admissionFeeBDT: matchedProgram.admission,
+        labAndOtherFeePerSemBDT: 0,
+        totalSemesters: matchedProgram.id === "pharmacy" ? 8 : 12,
+        estimatedTotalCostBDT: matchedProgram.total,
+        eligibility: "Please confirm current eligibility requirements with EWU Admissions.",
+        highlights: [],
+      }
+    : undefined;
 
   if (process.env.GEMINI_API_KEY) {
     try {
@@ -62,7 +79,7 @@ export default async function handler(request: Request, response: Response) {
         config: { systemInstruction: SYSTEM_INSTRUCTION, temperature: 0.7 },
       });
       if (result.text) {
-        response.status(200).json({ reply: result.text, programCard: matchedProgram, suggestedQuestions: [
+        response.status(200).json({ reply: result.text, programCard, suggestedQuestions: [
           "What is the total tuition fee for CSE?",
           "How to get 100% Medha Lalon scholarship?",
           "What are the undergraduate admission requirements?",
@@ -94,7 +111,7 @@ export default async function handler(request: Request, response: Response) {
 
   response.status(200).json({
     reply,
-    programCard: matchedProgram,
+    programCard,
     suggestedQuestions: [
       "What is the total tuition fee for CSE?",
       "How to get 100% scholarship at EWU?",

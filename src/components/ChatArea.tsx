@@ -144,7 +144,10 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
                 )}
 
                 {/* Attached Program Preview Card */}
-                {msg.programCard && (
+                {msg.programCard &&
+                  Number.isFinite(msg.programCard.estimatedTotalCostBDT) &&
+                  Number.isFinite(msg.programCard.perCreditFeeBDT) &&
+                  Number.isFinite(msg.programCard.admissionFeeBDT) && (
                   <div className="mt-3 p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs space-y-2 shadow-2xs">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-[#004a99]">
