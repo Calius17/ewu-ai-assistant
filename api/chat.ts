@@ -63,12 +63,21 @@ export default async function handler(request: Request, response: Response) {
     }
   }
 
-  const locationQuestion = ["where", "location", "address", "campus", "aftabnagar"].some((term) =>
-    lowerQuery.includes(term)
-  );
-  const reply = locationQuestion
-    ? "### East West University Campus Location\n\n**Permanent Campus:** Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.\n\nBeside Rampura Bridge and the eastern entrance of Hatirjheel.\n\nAdmissions: admissions@ewubd.edu | +880-9666775577"
-    : "Welcome to the East West University AI Assistant. I can help with tuition fees, programs, scholarships, admissions, and campus information.";
+  const locationQuestion = ["where", "location", "address", "campus", "aftabnagar"].some((term) => lowerQuery.includes(term));
+  const scholarshipQuestion = ["scholarship", "waiver", "medha", "merit", "golden"].some((term) => lowerQuery.includes(term));
+  const tuitionQuestion = ["tuition", "fee", "cost", "credit", "cse"].some((term) => lowerQuery.includes(term));
+  const admissionQuestion = ["admission", "eligibility", "requirement", "apply", "gpa"].some((term) => lowerQuery.includes(term));
+
+  let reply = "Welcome to the East West University AI Assistant. I can help with tuition fees, programs, scholarships, admissions, and campus information.";
+  if (locationQuestion) {
+    reply = "### East West University Campus Location\n\n**Permanent Campus:** Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.\n\nBeside Rampura Bridge and the eastern entrance of Hatirjheel.\n\nAdmissions: admissions@ewubd.edu | +880-9666775577";
+  } else if (scholarshipQuestion) {
+    reply = "### EWU Scholarships and Waivers\n\n- **Medha Lalon Scholarship:** 100% tuition waiver may be available for students with Golden GPA 5.0 in both SSC and HSC, or for top admission-test performers.\n- **Semester merit waiver:** CGPA 3.90-4.00 may qualify for 100%, 3.80-3.89 for 50%, and 3.70-3.79 for 25% tuition waiver.\n- **Freedom Fighter quota:** Up to 100% tuition waiver.\n- **Sibling or spouse concession:** 50% waiver for the second person.\n\nConfirm current criteria with EWU Admissions because policies can change.";
+  } else if (tuitionQuestion) {
+    reply = "### EWU CSE Tuition Estimate\n\n- **Program:** B.Sc. in Computer Science & Engineering\n- **Credits:** 140\n- **Per-credit fee:** ৳5,500\n- **Admission fee:** ৳25,000\n- **Estimated total:** approximately **৳855,000 BDT**, before any applicable waiver or updated institutional fees.\n\nAsk about a specific waiver percentage for a personalized estimate.";
+  } else if (admissionQuestion) {
+    reply = "### EWU Undergraduate Admission\n\nApplicants generally need a combined GPA of 6.00 or higher in SSC and HSC, with at least 2.50 in each. Engineering applicants usually need Mathematics and Physics; Pharmacy applicants need Biology and Chemistry.\n\nCheck the official EWU admissions office for the current intake requirements.";
+  }
 
   response.status(200).json({
     reply,
