@@ -5,24 +5,29 @@ type Response = {
 };
 
 const PROGRAMS = {
-  cse: { name: "Computer Science & Engineering", degree: "B.Sc. in CSE", totalCredits: 140, perCreditFeeBDT: 5500, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 5000, totalSemesters: 12 },
-  eee: { name: "Electrical & Electronic Engineering", degree: "B.Sc. in EEE", totalCredits: 140, perCreditFeeBDT: 5200, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 5000, totalSemesters: 12 },
-  ce: { name: "Civil Engineering", degree: "B.Sc. in CE", totalCredits: 152, perCreditFeeBDT: 5100, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 5000, totalSemesters: 12 },
-  pharmacy: { name: "Pharmacy", degree: "Bachelor of Pharmacy (B.Pharm)", totalCredits: 160, perCreditFeeBDT: 5400, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 6500, totalSemesters: 8 },
-  geb: { name: "Genetic Engineering & Biotechnology", degree: "B.Sc. in GEB", totalCredits: 130, perCreditFeeBDT: 5100, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 5500, totalSemesters: 12 },
-  bba: { name: "Bachelor of Business Administration", degree: "BBA", totalCredits: 123, perCreditFeeBDT: 5300, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 4000, totalSemesters: 12 },
-  economics: { name: "Economics", degree: "B.S.S. in Economics", totalCredits: 120, perCreditFeeBDT: 4800, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 3500, totalSemesters: 12 },
-  english: { name: "English", degree: "B.A. in English", totalCredits: 123, perCreditFeeBDT: 4600, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 3500, totalSemesters: 12 },
-  law: { name: "Law (LL.B. Honours)", degree: "LL.B. (Honours)", totalCredits: 130, perCreditFeeBDT: 5000, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 3500, totalSemesters: 12 },
-  sociology: { name: "Sociology", degree: "B.S.S. in Sociology", totalCredits: 120, perCreditFeeBDT: 4300, admissionFeeBDT: 25000, labAndOtherFeePerSemBDT: 3000, totalSemesters: 12 },
+  cse: { name: "Computer Science & Engineering", degree: "B.Sc. in CSE", totalCredits: 140, perCreditFeeBDT: 6500, tuitionTotalBDT: 904000, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 1003400 },
+  eee: { name: "Electrical & Electronic Engineering", degree: "B.Sc. in EEE", totalCredits: 140, perCreditFeeBDT: 6500, tuitionTotalBDT: 904000, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 1003400 },
+  ce: { name: "Civil Engineering", degree: "B.Sc. in CE", totalCredits: 145, perCreditFeeBDT: 6500, tuitionTotalBDT: 936500, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 1035900 },
+  pharmacy: { name: "Pharmacy", degree: "Bachelor of Pharmacy (B.Pharm)", totalCredits: 158, perCreditFeeBDT: 7000, tuitionTotalBDT: 1091000, admissionFeeBDT: 25000, labAndSemesterFees: 76000, totalSemesters: 8, grandTotalBDT: 1192000 },
+  geb: { name: "Genetic Engineering & Biotechnology", degree: "B.Sc. in GEB", totalCredits: 140, perCreditFeeBDT: 6500, tuitionTotalBDT: 904000, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 1003400 },
+  bba: { name: "Bachelor of Business Administration", degree: "BBA", totalCredits: 130, perCreditFeeBDT: 6500, tuitionTotalBDT: 836000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 917400 },
+  economics: { name: "Economics", degree: "B.S.S. in Economics", totalCredits: 130, perCreditFeeBDT: 5500, tuitionTotalBDT: 739000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 820400 },
+  english: { name: "English", degree: "B.A. in English", totalCredits: 130, perCreditFeeBDT: 5500, tuitionTotalBDT: 739000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 820400 },
+  law: { name: "Law (LL.B. Honours)", degree: "LL.B. (Honours)", totalCredits: 130, perCreditFeeBDT: 6500, tuitionTotalBDT: 842000, admissionFeeBDT: 25000, labAndSemesterFees: 60000, totalSemesters: 12, grandTotalBDT: 927000 },
+  sociology: { name: "Sociology", degree: "B.S.S. in Sociology", totalCredits: 130, perCreditFeeBDT: 5500, tuitionTotalBDT: 733000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 814400 },
+  "information-studies": { name: "Information Studies", degree: "B.S.S. in Information Studies", totalCredits: 130, perCreditFeeBDT: 5000, tuitionTotalBDT: 677000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 758400 },
+  ice: { name: "Information and Communication Engineering", degree: "B.Sc. in ICE", totalCredits: 140, perCreditFeeBDT: 6500, tuitionTotalBDT: 904000, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 1003400 },
+  pphs: { name: "Population and Public Health Sciences", degree: "B.S.S. in PPHS", totalCredits: 130, perCreditFeeBDT: 5500, tuitionTotalBDT: 724000, admissionFeeBDT: 25000, labAndSemesterFees: 56400, totalSemesters: 12, grandTotalBDT: 805400 },
+  mathematics: { name: "Mathematics", degree: "B.Sc. (Hons.) in Mathematics", totalCredits: 130, perCreditFeeBDT: 4000, tuitionTotalBDT: 566500, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 665900 },
+  "data-science": { name: "Data Science and Analytics", degree: "B.Sc. in Data Science and Analytics", totalCredits: 130, perCreditFeeBDT: 5500, tuitionTotalBDT: 748000, admissionFeeBDT: 25000, labAndSemesterFees: 74400, totalSemesters: 12, grandTotalBDT: 847400 },
 } as const;
 
 export default function handler(request: Request, response: Response) {
   try {
     const { programId = "cse", waiverPercent = 0 } = request.body || {};
     const program = PROGRAMS[programId as keyof typeof PROGRAMS] || PROGRAMS.cse;
-    const baseTuition = program.totalCredits * program.perCreditFeeBDT;
-    const labAndSemesterFees = program.labAndOtherFeePerSemBDT * program.totalSemesters;
+    const baseTuition = program.tuitionTotalBDT;
+    const labAndSemesterFees = program.labAndSemesterFees;
     const waiverAmount = Math.round((baseTuition * waiverPercent) / 100);
     const discountedTuition = baseTuition - waiverAmount;
     const finalPayable = discountedTuition + program.admissionFeeBDT + labAndSemesterFees;

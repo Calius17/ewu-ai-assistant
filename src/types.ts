@@ -10,6 +10,9 @@ export interface ProgramInfo {
   labAndOtherFeePerSemBDT: number;
   totalSemesters: number;
   estimatedTotalCostBDT: number;
+  publishedTuitionBDT?: number;
+  publishedOtherFeesBDT?: number;
+  publishedGrandTotalBDT?: number;
   eligibility: string;
   highlights: string[];
 }

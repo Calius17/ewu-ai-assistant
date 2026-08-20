@@ -23,16 +23,21 @@ type GeminiClient = {
 const SYSTEM_INSTRUCTION = "You are the official East West University Assistant for East West University in Dhaka, Bangladesh. Answer directly using EWU programs, tuition, scholarships, admissions, and campus information. Support English, Bengali, and Banglish. Permanent campus: Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.";
 
 const PROGRAMS = [
-  { id: "cse", name: "Computer Science & Engineering", degree: "B.Sc. in CSE", aliases: ["cse", "computer science", "computer engineering", "software"], credits: 140, perCredit: 5500, admission: 25000, total: 855000 },
-  { id: "eee", name: "Electrical & Electronic Engineering", degree: "B.Sc. in EEE", aliases: ["eee", "electrical", "electronic engineering"], credits: 140, perCredit: 5200, admission: 25000, total: 813000 },
-  { id: "ce", name: "Civil Engineering", degree: "B.Sc. in CE", aliases: ["civil", "civil engineering", "ce"], credits: 152, perCredit: 5100, admission: 25000, total: 860200 },
-  { id: "pharmacy", name: "Pharmacy", degree: "Bachelor of Pharmacy (B.Pharm)", aliases: ["pharmacy", "pharma", "b.pharm", "b pharm"], credits: 160, perCredit: 5400, admission: 25000, total: 941000 },
-  { id: "geb", name: "Genetic Engineering & Biotechnology", degree: "B.Sc. in GEB", aliases: ["geb", "genetic engineering", "biotechnology", "biotech"], credits: 130, perCredit: 5100, admission: 25000, total: 754000 },
-  { id: "bba", name: "Bachelor of Business Administration", degree: "BBA", aliases: ["bba", "business administration", "business", "management"], credits: 123, perCredit: 5300, admission: 25000, total: 724900 },
-  { id: "economics", name: "Economics", degree: "B.S.S. in Economics", aliases: ["economics", "economy"], credits: 120, perCredit: 4800, admission: 25000, total: 643000 },
-  { id: "english", name: "English", degree: "B.A. in English", aliases: ["english", "literature", "elt"], credits: 123, perCredit: 4600, admission: 25000, total: 632800 },
-  { id: "law", name: "Law", degree: "LL.B. (Honours)", aliases: ["law", "llb", "ll.b", "legal"], credits: 130, perCredit: 5000, admission: 25000, total: 717000 },
-  { id: "sociology", name: "Sociology", degree: "B.S.S. in Sociology", aliases: ["sociology", "social science"], credits: 120, perCredit: 4300, admission: 25000, total: 577000 },
+  { id: "cse", name: "Computer Science & Engineering", degree: "B.Sc. in CSE", aliases: ["cse", "computer science", "computer engineering", "software"], credits: 140, perCredit: 6500, admission: 25000, total: 1003400 },
+  { id: "eee", name: "Electrical & Electronic Engineering", degree: "B.Sc. in EEE", aliases: ["eee", "electrical", "electronic engineering"], credits: 140, perCredit: 6500, admission: 25000, total: 1003400 },
+  { id: "ce", name: "Civil Engineering", degree: "B.Sc. in CE", aliases: ["civil", "civil engineering", "ce"], credits: 145, perCredit: 6500, admission: 25000, total: 1035900 },
+  { id: "pharmacy", name: "Pharmacy", degree: "Bachelor of Pharmacy (B.Pharm)", aliases: ["pharmacy", "pharma", "b.pharm", "b pharm"], credits: 158, perCredit: 7000, admission: 25000, total: 1192000 },
+  { id: "geb", name: "Genetic Engineering & Biotechnology", degree: "B.Sc. in GEB", aliases: ["geb", "genetic engineering", "biotechnology", "biotech"], credits: 140, perCredit: 6500, admission: 25000, total: 1003400 },
+  { id: "bba", name: "Bachelor of Business Administration", degree: "BBA", aliases: ["bba", "business administration", "business", "management"], credits: 130, perCredit: 6500, admission: 25000, total: 917400 },
+  { id: "economics", name: "Economics", degree: "B.S.S. in Economics", aliases: ["economics", "economy"], credits: 130, perCredit: 5500, admission: 25000, total: 820400 },
+  { id: "english", name: "English", degree: "B.A. in English", aliases: ["english", "literature", "elt"], credits: 130, perCredit: 5500, admission: 25000, total: 820400 },
+  { id: "law", name: "Law", degree: "LL.B. (Honours)", aliases: ["law", "llb", "ll.b", "legal"], credits: 130, perCredit: 6500, admission: 25000, total: 927000 },
+  { id: "sociology", name: "Sociology", degree: "B.S.S. in Sociology", aliases: ["sociology", "social science"], credits: 130, perCredit: 5500, admission: 25000, total: 814400 },
+  { id: "information-studies", name: "Information Studies", degree: "B.S.S. in Information Studies", aliases: ["information studies", "information science"], credits: 130, perCredit: 5000, admission: 25000, total: 758400 },
+  { id: "ice", name: "Information and Communication Engineering", degree: "B.Sc. in ICE", aliases: ["ice", "information and communication engineering"], credits: 140, perCredit: 6500, admission: 25000, total: 1003400 },
+  { id: "pphs", name: "Population and Public Health Sciences", degree: "B.S.S. in PPHS", aliases: ["pphs", "population health", "public health"], credits: 130, perCredit: 5500, admission: 25000, total: 805400 },
+  { id: "mathematics", name: "Mathematics", degree: "B.Sc. (Hons.) in Mathematics", aliases: ["mathematics", "math", "mathematics degree"], credits: 130, perCredit: 4000, admission: 25000, total: 665900 },
+  { id: "data-science", name: "Data Science and Analytics", degree: "B.Sc. in Data Science and Analytics", aliases: ["data science", "data analytics", "analytics"], credits: 130, perCredit: 5500, admission: 25000, total: 847400 },
 ] as const;
 
 export default async function handler(request: Request, response: Response) {
@@ -104,7 +109,7 @@ export default async function handler(request: Request, response: Response) {
   } else if (tuitionQuestion && matchedProgram) {
     reply = `### EWU ${matchedProgram.name} Tuition Estimate\n\n- **Program:** ${matchedProgram.degree}\n- **Credits:** ${matchedProgram.credits}\n- **Per-credit fee:** ৳${matchedProgram.perCredit.toLocaleString()}\n- **Admission fee:** ৳${matchedProgram.admission.toLocaleString()}\n- **Estimated total:** approximately **৳${matchedProgram.total.toLocaleString()} BDT**, before any applicable waiver or updated institutional fees.\n\nAsk about a specific waiver percentage for a personalized estimate.`;
   } else if (tuitionQuestion) {
-    reply = "I can provide fees for CSE, EEE, Civil, Pharmacy, GEB, BBA, Economics, English, Law, and Sociology. Please mention the program name, for example: **What is the fee of BBA?**";
+    reply = "I can provide fees for CSE, EEE, Civil, Pharmacy, GEB, BBA, Economics, English, Law, Sociology, ICE, Information Studies, PPHS, Mathematics, and Data Science. Please mention the program name, for example: **What is the fee of BBA?**";
   } else if (admissionQuestion) {
     reply = "### EWU Undergraduate Admission\n\nApplicants generally need a combined GPA of 6.00 or higher in SSC and HSC, with at least 2.50 in each. Engineering applicants usually need Mathematics and Physics; Pharmacy applicants need Biology and Chemistry.\n\nCheck the official EWU admissions office for the current intake requirements.";
   }

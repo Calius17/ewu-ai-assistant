@@ -30,8 +30,8 @@ export const TuitionFeeCalculatorModal: React.FC<TuitionFeeCalculatorModalProps>
   }, [waiverType, customWaiverPercent]);
 
   // Calculations
-  const baseTuition = selectedProgram.totalCredits * selectedProgram.perCreditFeeBDT;
-  const labAndSemesterTotal = selectedProgram.labAndOtherFeePerSemBDT * selectedProgram.totalSemesters;
+  const baseTuition = selectedProgram.publishedTuitionBDT ?? selectedProgram.totalCredits * selectedProgram.perCreditFeeBDT;
+  const labAndSemesterTotal = selectedProgram.publishedOtherFeesBDT ?? selectedProgram.labAndOtherFeePerSemBDT * selectedProgram.totalSemesters;
   const waiverSavings = Math.round((baseTuition * activeWaiverPercent) / 100);
   const netTuition = baseTuition - waiverSavings;
   const netTotalCost = netTuition + selectedProgram.admissionFeeBDT + labAndSemesterTotal;
