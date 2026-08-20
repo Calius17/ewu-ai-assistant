@@ -15,12 +15,12 @@ function getAIClient(): GoogleGenAI | null {
   return aiClient;
 }
 
-const SYSTEM_INSTRUCTION = `You are "Aftab", the official, helpful, and knowledgeable AI Assistant for East West University (EWU) in Dhaka, Bangladesh.
+const SYSTEM_INSTRUCTION = `You are the official, helpful, and knowledgeable AI Assistant for East West University (EWU) in Dhaka, Bangladesh.
 
 LOCATION & CAMPUS:
 - Permanent Campus: Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.
 - Landmark: Situated near Rampura Bridge / East entrance of Hatirjheel.
-- Facilities: Fully air-conditioned modern campus, advanced computer & robotics labs, central library, indoor sports complex, cafeteria, medical center, university bus routes.
+- Facilities: Fully air-conditioned modern campus, advanced computer & robotics labs, central library, indoor sports complex, cafeteria, and medical center.
 
 PROGRAMS & TUITION FEES (UNDERGRADUATE):
 - B.Sc. in CSE: 140 Credits, 12 Trimesters, ৳5,500/credit, ৳25,000 admission fee. Total approx. ৳8,55,000 BDT. BAETE IEB Tier-1.
@@ -150,7 +150,7 @@ app.post("/api/chat", async (req: Request, res: Response) => {
           "What is the total tuition fee for CSE?",
           "How to get 100% Medha Lalon scholarship?",
           "What are the undergraduate admission requirements?",
-          "Where is the EWU campus located and what bus routes exist?",
+          "Where is the EWU campus located?",
         ]
           .filter((q) => !lowerQuery.includes(q.slice(0, 15).toLowerCase()))
           .slice(0, 3);
@@ -167,7 +167,7 @@ app.post("/api/chat", async (req: Request, res: Response) => {
   }
 
   // Grounded local response
-  let fallbackReply = `Welcome to **East West University (EWU) AI Assistant**! 🎓\n\nI can help you with:\n- 💰 **Tuition Fees & Credit Costs** for CSE, EEE, Civil, BBA, Pharmacy, Economics, etc.\n- 🏆 **Scholarships & Waivers** (100% Medha Lalon, semester CGPA waivers).\n- 📝 **Admissions & Eligibility** criteria.\n- 📍 **Campus Location** (Aftabnagar, Rampura, Dhaka).`;
+  let fallbackReply = `Please check the official East West University website for more information: https://www.ewubd.edu`;
 
   if (
     lowerQuery.includes("where") ||

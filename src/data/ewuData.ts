@@ -295,7 +295,7 @@ export const EWU_FAQS: FAQItem[] = [
     category: "campus",
     question: "Where is East West University campus located and how to reach?",
     shortAnswer: "Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212 (beside Rampura Bridge / Hatirjheel).",
-    prompt: "Tell me about the EWU Aftabnagar campus location, facilities, and transportation routes."
+    prompt: "Tell me about the EWU campus location and facilities."
   },
   {
     id: "faq-7",

@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="text-xs text-slate-500 font-medium hidden md:block bg-white px-3 py-1.5 rounded-full border border-slate-200">
-          Tri-Semester • Aftabnagar
+          Tri-Semester • EWU Campus
         </div>
 
         <div className="flex items-center gap-1">

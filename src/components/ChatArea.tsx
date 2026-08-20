@@ -94,7 +94,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
             Active Chat Session
           </span>
           <span className="text-[10px] text-slate-400 font-mono hidden sm:inline">
-            • Aftab AI
+            • EWU Assistant
           </span>
         </div>
         <div className="flex items-center gap-2">

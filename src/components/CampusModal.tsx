@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, MapPin, Phone, Mail, Globe, Calendar, Award, Bus, Users, BookOpen } from 'lucide-react';
+import { X, MapPin, Phone, Mail, Calendar, Award, Users, BookOpen } from 'lucide-react';
 import { EWU_INFO, GRADING_SYSTEM } from '../data/ewuData';
 
 interface CampusModalProps {
@@ -13,7 +13,7 @@ export const CampusModal: React.FC<CampusModalProps> = ({
   onClose,
   onSelectPrompt,
 }) => {
-  const [activeTab, setActiveTab] = useState<'info' | 'grading' | 'clubs' | 'transport'>('info');
+  const [activeTab, setActiveTab] = useState<'info' | 'grading' | 'clubs'>('info');
 
   if (!isOpen) return null;
 
@@ -77,16 +77,6 @@ export const CampusModal: React.FC<CampusModalProps> = ({
             }`}
           >
             Student Clubs
-          </button>
-          <button
-            onClick={() => setActiveTab('transport')}
-            className={`px-3 py-2 text-xs font-semibold rounded-t-lg transition border-b-2 ${
-              activeTab === 'transport'
-                ? 'border-[#004a99] text-[#004a99] bg-white'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
-            }`}
-          >
-            Transport & Bus Routes
           </button>
         </div>
 
@@ -215,30 +205,6 @@ export const CampusModal: React.FC<CampusModalProps> = ({
             </div>
           )}
 
-          {activeTab === 'transport' && (
-            <div className="space-y-3">
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-900 flex items-start space-x-2">
-                <Bus className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                <div>
-                  <strong>University Bus Service:</strong> EWU operates daily student bus fleets covering prime Dhaka routes (Uttara, Mirpur, Dhanmondi, Old Dhaka, Narayanganj).
-                </div>
-              </div>
-              <div className="space-y-2 text-xs text-slate-700">
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-                  <strong className="text-slate-900 block">Route 1: Uttara / Airport / Kuril</strong>
-                  <span>Uttara House Building ➔ Azampur ➔ Airport ➔ Khilkhet ➔ Kuril ➔ Badda ➔ EWU Aftabnagar.</span>
-                </div>
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-                  <strong className="text-slate-900 block">Route 2: Mirpur / Kazipara / Agargaon</strong>
-                  <span>Mirpur-10 ➔ Kazipara ➔ Shewrapara ➔ Agargaon ➔ Mohakhali ➔ Gulshan-1 ➔ EWU.</span>
-                </div>
-                <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-                  <strong className="text-slate-900 block">Route 3: Dhanmondi / Science Lab / Farmgate</strong>
-                  <span>Dhanmondi-32 ➔ Science Lab ➔ Shahbagh ➔ Farmgate ➔ Moghbazar ➔ Rampura ➔ EWU.</span>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Footer */}

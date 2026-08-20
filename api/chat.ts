@@ -20,7 +20,7 @@ type GeminiClient = {
   };
 };
 
-const SYSTEM_INSTRUCTION = "You are Aftab, the official AI Assistant for East West University in Dhaka, Bangladesh. Answer directly using EWU programs, tuition, scholarships, admissions, and campus information. Support English, Bengali, and Banglish. Permanent campus: Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.";
+const SYSTEM_INSTRUCTION = "You are the official East West University Assistant for East West University in Dhaka, Bangladesh. Answer directly using EWU programs, tuition, scholarships, admissions, and campus information. Support English, Bengali, and Banglish. Permanent campus: Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.";
 
 const PROGRAMS = [
   { id: "cse", name: "Computer Science & Engineering", degree: "B.Sc. in CSE", aliases: ["cse", "computer science", "computer engineering", "software"], credits: 140, perCredit: 5500, admission: 25000, total: 855000 },
@@ -96,7 +96,7 @@ export default async function handler(request: Request, response: Response) {
   const tuitionQuestion = ["tuition", "fee", "fees", "cost", "price", "credit", "how much", "total"].some((term) => lowerQuery.includes(term));
   const admissionQuestion = ["admission", "eligibility", "requirement", "apply", "gpa"].some((term) => lowerQuery.includes(term));
 
-  let reply = "Welcome to the East West University AI Assistant. I can help with tuition fees, programs, scholarships, admissions, and campus information.";
+  let reply = "For information outside the topics covered here, please check the official EWU website: https://www.ewubd.edu";
   if (locationQuestion) {
     reply = "### East West University Campus Location\n\n**Permanent Campus:** Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.\n\nBeside Rampura Bridge and the eastern entrance of Hatirjheel.\n\nAdmissions: admissions@ewubd.edu | +880-9666775577";
   } else if (scholarshipQuestion) {

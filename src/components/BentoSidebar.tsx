@@ -84,10 +84,10 @@ export const BentoSidebar: React.FC<BentoSidebarProps> = ({
               Scholarships
             </button>
             <button
-              onClick={() => onSelectPrompt("Where is the EWU campus located and what are the bus routes?")}
+              onClick={() => onSelectPrompt("Where is the EWU campus located?")}
               className="text-[11px] bg-slate-100 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-900 text-slate-600 px-3 py-1.5 rounded-full border border-slate-200 font-medium transition"
             >
-              Location & Bus
+              Campus Location
             </button>
             <button
               onClick={() => onSelectPrompt("What is the admission test syllabus for undergraduate degrees?")}
@@ -151,7 +151,7 @@ export const BentoSidebar: React.FC<BentoSidebarProps> = ({
           <div className="text-[9px] text-orange-700/80">Tuition Waiver</div>
         </div>
 
-        {/* Metric 2: Campus & Bus */}
+        {/* Metric 2: Campus */}
         <div
           onClick={onOpenCampus}
           className="bg-blue-50 hover:bg-blue-100/70 border border-blue-100 rounded-3xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition shadow-2xs group"
@@ -163,7 +163,7 @@ export const BentoSidebar: React.FC<BentoSidebarProps> = ({
           <div className="text-[10px] font-bold text-blue-900 uppercase tracking-tight mt-1">
             Permanent Campus
           </div>
-          <div className="text-[9px] text-blue-700/80">Bus Routes across Dhaka</div>
+          <div className="text-[9px] text-blue-700/80">Campus information</div>
         </div>
       </div>
     </div>

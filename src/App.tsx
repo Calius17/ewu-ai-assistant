@@ -17,13 +17,13 @@ How can I help you today? I can answer questions about:
 - **Tuition fees & per-credit costs** (CSE, EEE, BBA, Pharmacy, English, Law, Civil, Economics, etc.)
 - **Scholarships & Waivers** (100% Medha Lalon, Semester GPA waivers, Freedom Fighter quota)
 - **Admission requirements & test syllabus**
-- **Campus facilities, grading (CGPA) & bus transport**`,
+- **Campus facilities, grading (CGPA) & student life**`,
   timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
   suggestedQuestions: [
     'What is the credit fee for the CSE department?',
     'How to get 100% scholarship at EWU?',
     'What are the undergraduate admission requirements?',
-    'Where is the EWU campus located and what bus routes exist?',
+    'Where is the EWU campus located?',
   ],
 };
 
@@ -95,19 +95,10 @@ export default function App() {
     } catch (err) {
       clearTimeout(timeoutId);
       console.error('Chat request error:', err);
-      const lower = text.toLowerCase();
-      let customFallback = `### ℹ️ EWU Admissions & Fee Guide\n\n- **Tuition Fee:** B.Sc. in CSE is ~৳8.55 Lakh BDT (140 credits at ৳5,500/credit + admission fee ৳25,000). BBA is ~৳7.25 Lakh BDT. Pharmacy is ~৳9.41 Lakh BDT.\n- **Scholarships:** Golden GPA 5.0 in SSC & HSC or top scores in EWU admission test qualify for the **100% Medha Lalon Tuition Waiver**.\n- **Eligibility:** Minimum combined GPA 6.00 in SSC & HSC (minimum 2.50 in each).\n- **Location:** Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212.`;
-
-      if (lower.includes('cse')) {
-        customFallback = `### 🎓 B.Sc. in CSE at East West University\n\n- **Accreditation:** BAETE IEB Tier-1\n- **Total Credits:** 140 Credits (12 Semesters / 4 Years)\n- **Cost per Credit:** ৳5,500 BDT\n- **One-time Admission Fee:** ৳25,000 BDT\n- **Estimated Total 4-Year Cost:** **~৳8,55,000 BDT**\n- **Eligibility:** Combined GPA 6.00+ in SSC & HSC with Physics and Higher Math.`;
-      } else if (lower.includes('scholarship') || lower.includes('waiver') || lower.includes('discount')) {
-        customFallback = `### 🏆 EWU Scholarships & Waivers\n\n1. **Medha Lalon Scholarship (100% Waiver):** Golden GPA 5.0 or top scorers in EWU admission test (maintained with CGPA 3.80+).\n2. **Semester Merit Waivers:** CGPA 3.90–4.00 (100% waiver), CGPA 3.80–3.89 (50% waiver), CGPA 3.70–3.79 (25% waiver).\n3. **Freedom Fighter Quota:** 100% full waiver for children of Freedom Fighters.\n4. **Sibling / Spouse:** 50% waiver.`;
-      }
-
       const errorMsg: ChatMessage = {
         id: `bot-err-${Date.now()}`,
         sender: 'bot',
-        text: customFallback,
+        text: 'Please check the official EWU website for more information: https://www.ewubd.edu',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         suggestedQuestions: [
           'What is the credit fee for the CSE department?',

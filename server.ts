@@ -17,12 +17,12 @@ function getAIClient(): GoogleGenAI | null {
   return aiClient;
 }
 
-const SYSTEM_INSTRUCTION = `You are "Aftab", the official, helpful, and knowledgeable AI Assistant for East West University (EWU) in Dhaka, Bangladesh.
+const SYSTEM_INSTRUCTION = `You are the official, helpful, and knowledgeable AI Assistant for East West University (EWU) in Dhaka, Bangladesh.
 
 LOCATION & CAMPUS:
 - Permanent Campus: Plot A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.
 - Landmark: Situated near Rampura Bridge / East entrance of Hatirjheel.
-- Facilities: Fully air-conditioned modern multi-story campus, advanced computer & robotics labs, electronics labs, pharmacology labs, central air-conditioned library, indoor sports complex, cafeteria, medical center, university bus routes.
+- Facilities: Fully air-conditioned modern multi-story campus, advanced computer & robotics labs, electronics labs, pharmacology labs, central air-conditioned library, indoor sports complex, cafeteria, and medical center.
 
 PROGRAMS & TUITION FEES (UNDERGRADUATE):
 - B.Sc. in Computer Science & Engineering (CSE): 140 Credits, 12 Trimesters, ৳5,500/credit, ৳25,000 admission fee. Total approx. ৳8,55,000 BDT. BAETE IEB Tier-1 Accredited.
@@ -60,7 +60,7 @@ CONTACT:
 
 GUIDELINES:
 - Answer directly and accurately.
-- When asked about location/where EWU is, state the exact permanent campus address in Aftabnagar, Rampura, Dhaka, and how to reach it.
+- When asked about location/where EWU is, state the exact permanent campus address in Aftabnagar, Rampura, Dhaka.
 - Use clean formatting with bold headers, bullet points, and markdown tables.
 - Support both English and Bengali / Banglish inquiries.`;
 
@@ -186,7 +186,7 @@ async function startServer() {
           "What is the total tuition fee for CSE?",
           "How to get 100% Medha Lalon scholarship?",
           "What are the undergraduate admission requirements?",
-          "Where is the EWU campus located and what bus routes exist?",
+          "Where is the EWU campus located?",
         ]
           .filter((q) => !lowerQuery.includes(q.slice(0, 15).toLowerCase()))
           .slice(0, 3);
@@ -230,7 +230,6 @@ Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.
 **Key Landmarks & How to Reach:**
 - Located in **Aftabnagar**, right beside the **Rampura Bridge** and the eastern entrance of **Hatirjheel**.
 - Very easily accessible from Badda, Mohakhali, Banasree, Malibagh, and Kuril.
-- University bus services operate along major routes across Dhaka for students.
 
 **Official Contact & Helpdesk:**
 - **PABX / Landline:** +880-9666775577, +880-2-55046678
@@ -238,7 +237,6 @@ Plot No- A/2, Jahurul Islam City, Aftabnagar, Rampura, Dhaka-1212, Bangladesh.
 - **Official Website:** [www.ewubd.edu](https://www.ewubd.edu)
 - **Student Portal:** [portal.ewubd.edu](https://portal.ewubd.edu)`;
       suggestions.push(
-        "What bus routes are available for EWU students?",
         "What are the admission requirements for EWU?",
         "What is the total tuition fee for CSE?"
       );
@@ -372,40 +370,17 @@ East West University awards generous merit and financial aid scholarships:
       lowerQuery.includes("test") ||
       lowerQuery.includes("syllabus")
     ) {
-      fallbackReply = `### 📝 EWU Admission Requirements & Procedure
+      fallbackReply = `### EWU Admission Requirements
 
-**General Eligibility for Undergraduate Programs:**
-- Minimum GPA **2.50** individually in both SSC and HSC (or equivalent).
-- Combined total GPA of at least **6.00** across SSC & HSC.
-- **For Engineering (CSE/EEE/CE):** Must have passed Physics & Mathematics in HSC.
-- **For Pharmacy:** Combined GPA 8.00+ in SSC & HSC; minimum GPA 3.00 in Chemistry and Biology.
-- **For English Medium ('O' / 'A' Levels):** At least 5 subjects in 'O' Level and 2 subjects in 'A' Level with minimum grade points.
+    - Minimum GPA 2.50 individually in SSC and HSC.
+    - Combined GPA of at least 6.00 across SSC and HSC.
+    - Engineering applicants need Physics and Mathematics in HSC.
+    - Pharmacy applicants need Biology and Chemistry in HSC.
 
-**Admission Test Structure:**
-- **Section 1:** English Grammar, Vocabulary & Reading Comprehension
-- **Section 2:** General Mathematics & Analytical Problem Solving
-- **Section 3:** Subject-specific test (Higher Math & Physics for Engineering; Biology & Chemistry for Pharmacy).`;
+    Check the official EWU website for current admission test details and requirements: https://www.ewubd.edu`;
       suggestions.push("Total tuition fee for CSE", "Medha Lalon 100% waiver criteria", "Campus location and contact number");
     }
-    // 8. BUS & TRANSPORT
-    else if (
-      lowerQuery.includes("bus") ||
-      lowerQuery.includes("transport") ||
-      lowerQuery.includes("route") ||
-      lowerQuery.includes("gari")
-    ) {
-      fallbackReply = `### 🚌 East West University Transport & Bus Service
-
-EWU provides dedicated student bus routes across major parts of Dhaka:
-- **Route 1:** Mirpur 10 / 11 ↔ Kazipara ↔ Shewrapara ↔ Mohakhali ↔ EWU Campus
-- **Route 2:** Uttara (House Building) ↔ Airport ↔ Khilkhet ↔ Kuril ↔ Badda ↔ EWU Campus
-- **Route 3:** Dhanmondi (Science Lab) ↔ Shahbagh ↔ Kakrail ↔ Moghbazar ↔ Rampura ↔ EWU Campus
-- **Route 4:** Jatrabari ↔ Sayedabad ↔ Kamalapur ↔ Khilgaon ↔ Malibagh ↔ EWU Campus
-
-*Buses operate during morning and evening shifts matching class schedules.*`;
-      suggestions.push("Where is the EWU campus located?", "What is the total fee for CSE?", "How to get a scholarship?");
-    }
-    // 9. CLUBS & STUDENT LIFE
+    // 8. CLUBS & STUDENT LIFE
     else if (lowerQuery.includes("club") || lowerQuery.includes("life") || lowerQuery.includes("activities")) {
       fallbackReply = `### 🎯 Student Clubs & Extracurricular Activities at EWU
 
@@ -417,18 +392,11 @@ EWU has 18+ active student organizations:
 - **EWU Photography Club, Cultural Club, Sports Club, Rotaract Club.**`;
       suggestions.push("What degree programs does EWU offer?", "What are the scholarship options?", "Where is the EWU campus?");
     }
-    // 10. GENERAL DEFAULT WELCOME
+    // 9. GENERAL DEFAULT
     else {
-      fallbackReply = `Welcome to **East West University (EWU) AI Assistant**! 🎓
+      fallbackReply = `Please check the official East West University website for more information: https://www.ewubd.edu
 
-I can help you with comprehensive details regarding:
-- 💰 **Tuition Fees & Credit Costs:** Exact fee breakdowns for CSE, EEE, Civil, BBA, Pharmacy, English, Law, Economics, MBA, etc.
-- 🏆 **Scholarships & Waivers:** Medha Lalon 100% merit waiver, semester GPA waivers (CGPA 3.90+ for 100%), Freedom Fighter quota, sibling discounts.
-- 📝 **Admissions & Eligibility:** GPA requirements, subject prerequisites, and admission test syllabus.
-- 🏫 **Campus & Student Life:** Aftabnagar permanent campus location, transport bus routes, library, and student clubs.
-- 📊 **Grading System & Academic Calendar:** 4.00 CGPA scale, Tri-semester breakdown (Spring, Summer, Fall).
-
-*Feel free to ask any specific question or choose from the suggested queries below!*`;
+    `;
       suggestions.push(
         "Where is the EWU campus located?",
         "What is the total fee for B.Sc. in CSE?",
